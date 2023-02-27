@@ -4,7 +4,8 @@
   "description": "C'est le repository de la formation node JS !",
   "main": "index.js",
   "scripts": {
-    "compiler": "npx tsc --watch"
+    "compiler": "npx tsc --watch",
+    "app": "npm i -D nodemon"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,7 @@
   "homepage": "https://github.com/bsznn/formation-nodejs#readme",
   "devDependencies": {
     "@types/node": "^18.14.2",
+    "nodemon": "^2.0.20",
     "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "nodemon": "^2.0.20"
   }
 }
