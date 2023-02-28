@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compiler": "npx tsc --watch",
-    "app": "npm i -D nodemon",
+    "app": "npx nodemon -r dotenv/config dist/index.js",
     "start": "npx concurrently npm:compiler npm:app"
   },
   "repository": {
