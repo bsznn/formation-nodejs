@@ -1,9 +1,44 @@
-GET http://127.0.0.1:4646
+GET http://127.0.0.1:5353
 
 ###
 
-GET http://127.0.0.1:4646/hello
+GET http://127.0.0.1:5353/hello
 
 ###
 
-GET http://127.0.0.1:4646/student
+GET http://127.0.0.1:5353/eleves
+
+###
+
+GET http://127.0.0.1:5353/calc/add/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/sub/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/mul/10/5
+
+###
+
+GET http://127.0.0.1:5353/calc/div/10/2
+
+###
+
+POST http://127.0.0.1:5353/calculate
+operation: mul
+Content-Type: application/json
+
+{
+  "x": 10,
+  "y": 4
+}
+
+###
+
+GET http://127.0.0.1:5353/calculatrice/results
+
+###
+
+GET http://127.0.0.1:5353/testmongo

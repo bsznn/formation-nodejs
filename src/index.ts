@@ -1,47 +1,46 @@
-import fastify from "fastify"
+import fastifyMongodb from '@fastify/mongodb'
+import fastify from 'fastify'
+import fastifyPlugin from 'fastify-plugin'
+import calculatriceRoutes from './routes/calculatrice'
+import testouilleRoutes from './routes/testouille'
 
-const newApp = fastify()
+// Création d'une application (notre serveur logique HTTP)
+const app = fastify({ logger: true })
 
-newApp.get('/', () => 'Bienvenue sur mon serveur')
-
-newApp.get('/hello', () => {
-  console.log('Bonjour tout le monde !')
-
-  return 'Bonjour tout le monde'
+// Première route sur le resource principale
+app.get('/', () => {
+  return {
+    message: 'Coucou',
+  }
 })
 
-newApp.listen({ port: 4646, host: '127.0.0.1' }, () => {
-  console.log('Mon serveur est prèt : http://127.0.0.1:4646')
+// Route testant mongodb
+app.get('/testmongo', async () => {
+  await app.mongo.db?.collection('tests').insertOne({
+    message: 'coucou les amis',
+  })
+
+  return 'Mongodb à un nouveau document !'
 })
 
-newApp.get("/student", (request, response) => {
+// enregistrement du plugin mongo db
+app.register(fastifyMongodb, {
+  // url de connexion à la base de données
+  url: process.env.MONGO_URL,
+  // Nom lire représentant la base de données
+  database: process.env.MONGO_DATABASE,
+})
 
-  response.header("Developed-With", "fastify");
-  return [
-    {
-      id: "1",
-      nom: "john",
-      prenom: "john",
-      age: "32",
-    },
-    {
-      id: "2",
-      nom: "john",
-      prenom: "rose",
-      age: "36",
-    },
-    {
-      id: "3",
-      nom: "john",
-      prenom: "jane",
-      age: "40",
-    },
-    {
-      id: "4",
-      nom: "john",
-      prenom: "jean",
-      age: "38",
-    },
-  ];
-});
+// enregistremet de mon premier plugin
+app.register(fastifyPlugin(testouilleRoutes))
+// Enregistrement du plugin de calculatrice
+app.register(fastifyPlugin(calculatriceRoutes))
 
+// On écoute une porte de notre ordinateur
+app.listen({ port: process.env.PORT as any, host: process.env.HOST }, error => {
+  console.error(error)
+  // Petit fonction qui se déclenche lorsque notre serveur se met à écouter la porte
+  console.log(
+    `Mon serveur est prèt : http://${process.env.HOST}:${process.env.PORT}`,
+  )
+})
