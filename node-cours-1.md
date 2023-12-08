@@ -44,3 +44,13 @@ Le processus de slugification, appelé Slugify, permet de convertir une chaîne 
 - `Math.floor` : Utilisée pour arrondir un nombre à l'entier inférieur.
 - `Math.random` : Génère un nombre décimal aléatoire entre 0 (inclus) et 1 (exclus).
 - `map` : C'est une méthode qui permet d'itérer sur les éléments d'un tableau et d'appliquer une fonction à chacun d'eux.
+
+La méthode `filter()` en JS crée un nouveau tableau en sélectionnant les éléments d'un tableau d'origine qui satisfont une condition spécifiée. À la différence de `map()`, qui transforme chaque élément, `filter()` ne modifie pas le tableau d'origine ; au lieu de cela, elle renvoie un nouveau tableau contenant exclusivement les éléments qui réussissent le test défini par une fonction de rappel. Par exemple, pour extraire les nombres pairs d'un tableau :
+
+```js
+const tableauOriginal = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const tableauFiltre = tableauOriginal.filter((element) => element % 2 === 0);
+console.log(tableauFiltre); // Résultat : [2, 4, 6, 8, 10]
+```
+
+Dans cet exemple, l'utilisation de `filter()` permet de créer rapidement un nouveau tableau contenant uniquement les nombres pairs du tableau d'origine.
