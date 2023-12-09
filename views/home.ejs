@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Megrim&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/stylesheets/output.css" rel="stylesheet" />
+    <title>🎀 Kittens</title>
+  </head>
+  <body class="bg-white min-h-screen font-nunito-sans">
+    <header class="bg-pink-500 py-4 m-10 rounded-md shadow-md">
+      <h1 class="text-4xl font-megrim font-extrabold text-center text-white">
+        Kittens
+      </h1>
+    </header>
+
+    <main
+      class="container mx-auto px-5 sm:px-0 my-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+    >
+      <% for(const item of cats) { %>
+      <article
+        class="flex flex-col items-center justify-between rounded overflow-hidden shadow-md transition-transform transform hover:scale-105 bg-pink-500"
+      >
+        <div class="relative w-full">
+          <img
+            src="<%= item.image %>"
+            alt="cover book of <%= item.name %>"
+            class="w-full rounded-md object-cover aspect-[4/5]"
+          />
+          <div
+            class="absolute inset-0 rounded-md bg-gray-900 opacity-50 hover:opacity-0 transition-opacity"
+          ></div>
+        </div>
+
+        <div class="max-w-xl px-5 sm:px-0 mt-4 text-center">
+          <ul class="mt-2 flex justify-between items-baseline gap-x-4">
+            <li>
+              <h3
+                class="mt-3 text-lg font-semibold leading-6 text-white hover:text-pink-300 transition-colors"
+              >
+                <a href="/<%= item.id %>">
+                  <span class="absolute inset-0"></span>
+                  <%= item.name %>
+                </a>
+              </h3>
+            </li>
+          </ul>
+
+          <div class="group relative mt-2">
+            <span class="block text-white"
+              >Age : <time class="font-semibold"> <%= item.age %> </time></span
+            >
+            <p class="mt-2 text leading-6 text-gray-100 line-clamp-2">
+              <%= item.description %>
+            </p>
+          </div>
+        </div>
+      </article>
+      <% } %>
+    </main>
+
+    <footer class="bg-pink-500 py-4 m-10 rounded-md shadow-md">
+      <p class="text-center text-white font-nunito-sans">
+        © 2023 Kitten, Inc. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>

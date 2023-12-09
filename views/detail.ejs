@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Megrim&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/stylesheets/output.css" rel="stylesheet" />
+    <title>🎀 Kittens</title>
+  </head>
+  <body>
+    <header class="bg-pink-500 py-4 m-10">
+      <h1 class="text-4xl font-megrim font-extrabold text-center text-white">
+        Kittens
+      </h1>
+    </header>
+
+    <main class="flex flex-col justify-center items-center gap-8 min-h-screen">
+      <h2
+        class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+      >
+        <%= cat.name %>
+      </h2>
+      <div>
+        <ul class="flex gap-2 justify-center items-end">
+          <li>Age : <%= cat.age %></li>
+        </ul>
+      </div>
+
+      <img
+        src="<%= cat.image %>"
+        alt="cover of <%= cat.name %>"
+        class="rounded-2xl object-cover aspect-[9/9]"
+      />
+      <p><%= cat.description %></p>
+    </main>
+  </body>
+</html>
